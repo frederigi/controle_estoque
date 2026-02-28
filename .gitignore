@@ -1,0 +1,6 @@
+# Arquivos de conexão com credenciais sensíveis
+conexao.php
+
+# Scripts e backups locais (NÃO ENVIAR PARA O GITHUB)
+testes/
+.git_backup
