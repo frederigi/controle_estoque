@@ -86,26 +86,45 @@ if ($is_almoxarife) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    
+
     <!-- TAG VIEWPORT PARA CELULAR: Adquiriendo as proporções exatas do aparelho -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Controle de Estoque</title>
-    
+
     <!-- BOOTSTRAP 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- ÍCONES BOOTSTRAP -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <style>
         /* FONTE E FUNDO MODERNOS */
-        body { background-color: #f0f2f5; font-family: 'Outfit', 'Inter', sans-serif; color: #334155; }
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Outfit', 'Inter', sans-serif;
+            color: #334155;
+        }
 
-        .navbar { background: #ffffff !important; border-bottom: 1px solid #e2e8f0; }
-        .navbar-brand { color: #0f172a !important; font-weight: 800; }
-        .nav-link { color: #64748b !important; font-weight: 600; }
-        .nav-link.active { color: #0ea5e9 !important; }
+        .navbar {
+            background: #ffffff !important;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .navbar-brand {
+            color: #0f172a !important;
+            font-weight: 800;
+        }
+
+        .nav-link {
+            color: #64748b !important;
+            font-weight: 600;
+        }
+
+        .nav-link.active {
+            color: #0ea5e9 !important;
+        }
 
         /* CARDS PRINCIPAIS */
         .dash-card {
@@ -123,7 +142,7 @@ if ($is_almoxarife) {
             padding: 2.5rem 1.5rem;
             height: 100%;
         }
-        
+
         .dash-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -140,13 +159,38 @@ if ($is_almoxarife) {
             font-size: 2rem;
         }
 
-        .bg-card-blue { background: #e0f2fe; color: #0ea5e9; }
-        .bg-card-green { background: #dcfce7; color: #22c55e; }
-        .bg-card-purple { background: #f3e8ff; color: #a855f7; }
-        .bg-card-orange { background: #ffedd5; color: #f97316; }
+        .bg-card-blue {
+            background: #e0f2fe;
+            color: #0ea5e9;
+        }
 
-        .card-title { font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; }
-        .card-desc { font-size: 0.875rem; color: #64748b; text-align: center; }
+        .bg-card-green {
+            background: #dcfce7;
+            color: #22c55e;
+        }
+
+        .bg-card-purple {
+            background: #f3e8ff;
+            color: #a855f7;
+        }
+
+        .bg-card-orange {
+            background: #ffedd5;
+            color: #f97316;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-align: center;
+        }
 
         /* ALERTAS */
         .alert-pill {
@@ -158,140 +202,234 @@ if ($is_almoxarife) {
         }
 
         /* MODAIS CUSTOM */
-        .modal-content { border-radius: 24px; border: none; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
-        .modal-header { border-bottom: 1px solid #f1f5f9; padding: 1.5rem 2rem; }
-        .modal-body { padding: 2rem; }
-        .form-control { border-radius: 12px; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; background: #f8fafc; }
-        .form-control:focus { border-color: #0ea5e9; box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1); }
+        .modal-content {
+            border-radius: 24px;
+            border: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #f1f5f9;
+            padding: 1.5rem 2rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .form-control {
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+        }
+
+        .form-control:focus {
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+        }
 
         @media (max-width: 768px) {
-            .navbar-brand span { display: none; }
+            .navbar-brand span {
+                display: none;
+            }
         }
 
         /* REGRAS DE IMPRESSÃO - Focar na Tabela de Requisições */
         @media print {
-            .no-print, .dash-card, .alert-pill, .navbar, .icon-box, .btn { display: none !important; }
-            body { background: white !important; font-size: 10pt; }
-            .container { max-width: 100% !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
-            .card { border: none !important; box-shadow: none !important; }
-            .card-header { border-bottom: 2px solid #000 !important; padding: 0 0 10px 0 !important; }
-            .table { width: 100% !important; border: 1px solid #000 !important; }
-            .table-custom tr { background: transparent !important; border-bottom: 1px solid #000 !important; }
-            .table th, .table td { border: 1px solid #000 !important; padding: 5px !important; color: #000 !important; }
-            .badge { border: 1px solid #000 !important; color: #000 !important; background: transparent !important; }
-            .d-print-block { display: block !important; }
+
+            .no-print,
+            .dash-card,
+            .alert-pill,
+            .navbar,
+            .icon-box,
+            .btn {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                font-size: 10pt;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .card {
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            .card-header {
+                border-bottom: 2px solid #000 !important;
+                padding: 0 0 10px 0 !important;
+            }
+
+            .table {
+                width: 100% !important;
+                border: 1px solid #000 !important;
+            }
+
+            .table-custom tr {
+                background: transparent !important;
+                border-bottom: 1px solid #000 !important;
+            }
+
+            .table th,
+            .table td {
+                border: 1px solid #000 !important;
+                padding: 5px !important;
+                color: #000 !important;
+            }
+
+            .badge {
+                border: 1px solid #000 !important;
+                color: #000 !important;
+                background: transparent !important;
+            }
+
+            .d-print-block {
+                display: block !important;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     </style>
 </head>
+
 <body>
 
-<!-- BARRA DE NAVEGAÇÃO BRANCA E LIMPA -->
-<?php include 'header.php'; ?>
+    <!-- BARRA DE NAVEGAÇÃO BRANCA E LIMPA -->
+    <?php include 'header.php'; ?>
 
-<main class="container mb-5" style="max-width: 1100px;">
-    
-    <!-- CABEÇALHO PARA IMPRESSÃO -->
-    <div class="d-none d-print-block text-center mb-4 mt-2">
-        <h3 class="fw-bold">RELAÇÃO DE REQUISIÇÕES PENDENTES</h3>
-        <p class="text-muted small">Prefeitura Municipal de São Carlos - Emprego e Renda</p>
-        <hr class="border-2 border-dark opacity-100">
-    </div>
-    
-    <!-- ÁREA DE BOAS VINDAS -->
-    <div class="row align-items-center mb-5 no-print">
-        <div class="col-12 text-center text-lg-start d-lg-flex justify-content-between align-items-center">
-            <div>
-                <h2 class="fw-bold text-dark mb-0">Olá, <?= explode(' ', $_SESSION['usuario_nome'])[0] ?>! 👋</h2>
-                <p class="text-muted mb-0">Bem-vindo ao painel de controle do estoque.</p>
-            </div>
-            <div class="mt-3 mt-lg-0">
-                 <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill border fw-bold">
-                    <i class="bi bi-shield-check me-1"></i> Perfil: <?= ucfirst($_SESSION['nivel_acesso']) ?>
-                </span>
-            </div>
+    <main class="container mb-5" style="max-width: 1100px;">
+
+        <!-- CABEÇALHO PARA IMPRESSÃO -->
+        <div class="d-none d-print-block text-center mb-4 mt-2">
+            <h3 class="fw-bold">RELAÇÃO DE REQUISIÇÕES PENDENTES</h3>
+            <p class="text-muted small">Prefeitura Municipal de São Carlos - Emprego e Renda</p>
+            <hr class="border-2 border-dark opacity-100">
         </div>
-    </div>
 
-    <!-- ALERTAS CRÍTICOS -->
-    <?php if ($is_almoxarife && count($alertas_estoque) > 0): ?>
-        <div class="alert alert-pill mb-5 no-print shadow-sm">
-            <div class="d-flex align-items-center mb-3">
-                <div class="bg-danger text-white p-2 rounded-circle me-3">
-                    <i class="bi bi-bell-fill fs-5"></i>
-                </div>
+        <!-- ÁREA DE BOAS VINDAS -->
+        <div class="row align-items-center mb-5 no-print">
+            <div class="col-12 text-center text-lg-start d-lg-flex justify-content-between align-items-center">
                 <div>
-                    <h5 class="fw-bold mb-0">Estoque Baixo</h5>
-                    <p class="mb-0 small opacity-75">Os itens abaixo precisam de reposição urgente.</p>
+                    <h2 class="fw-bold text-dark mb-0">Olá, <?= explode(' ', $_SESSION['usuario_nome'])[0] ?>! 👋</h2>
+                    <p class="text-muted mb-0">Bem-vindo ao painel de controle do estoque.</p>
+                </div>
+                <div class="mt-3 mt-lg-0">
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill border fw-bold">
+                        <i class="bi bi-shield-check me-1"></i> Perfil: <?= ucfirst($_SESSION['nivel_acesso']) ?>
+                    </span>
                 </div>
             </div>
-            <div class="row g-2">
-                <?php foreach ($alertas_estoque as $alerta): ?>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="bg-white p-2 px-3 rounded-pill border d-flex justify-content-between align-items-center">
-                            <span class="small fw-bold text-dark"><?= htmlspecialchars($alerta['nome']) ?></span>
-                            <span class="badge bg-danger rounded-pill"><?= $alerta['estoque_atual'] ?></span>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
         </div>
-    <?php endif; ?>
 
-
-    <!-- GRID DE OPÇÕES (Cards Grandes) -->
-    <div class="row g-4 mb-5">
-        
-        <?php if ($is_almoxarife): ?>
-            <div class="col-6 col-md-4 col-lg-3">
-                <a href="admin_produtos.php" class="dash-card">
-                    <div class="icon-box bg-card-blue">
-                        <i class="bi bi-plus-circle"></i>
+        <!-- ALERTAS CRÍTICOS -->
+        <?php if ($is_almoxarife && count($alertas_estoque) > 0): ?>
+            <div class="alert alert-pill mb-5 no-print shadow-sm">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-danger text-white p-2 rounded-circle me-3">
+                        <i class="bi bi-bell-fill fs-5"></i>
                     </div>
-                    <span class="card-title text-center">Produtos</span>
-                    <span class="card-desc">Gerenciar itens</span>
-                </a>
-            </div>
-            <?php if ($is_admin): ?>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <a href="admin_usuarios.php" class="dash-card">
-                        <div class="icon-box bg-card-orange">
-                            <i class="bi bi-people"></i>
+                    <div>
+                        <h5 class="fw-bold mb-0">Estoque Baixo</h5>
+                        <p class="mb-0 small opacity-75">Os itens abaixo precisam de reposição urgente.</p>
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <?php foreach ($alertas_estoque as $alerta): ?>
+                        <div class="col-sm-6 col-md-3">
+                            <div
+                                class="bg-white p-2 px-3 rounded-pill border d-flex justify-content-between align-items-center">
+                                <span class="small fw-bold text-dark"><?= htmlspecialchars($alerta['nome']) ?></span>
+                                <span class="badge bg-danger rounded-pill"><?= $alerta['estoque_atual'] ?></span>
+                            </div>
                         </div>
-                        <span class="card-title text-center">Usuários</span>
-                        <span class="card-desc">Configurações</span>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
+
+        <!-- GRID DE OPÇÕES (Cards Grandes) -->
+        <div class="row g-4 mb-5">
+
+            <?php if ($is_almoxarife): ?>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="admin_produtos.php" class="dash-card">
+                        <div class="icon-box bg-card-blue">
+                            <i class="bi bi-plus-circle"></i>
+                        </div>
+                        <span class="card-title text-center">Produtos</span>
+                        <span class="card-desc">Gerenciar itens</span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="entradas.php" class="dash-card">
+                        <div class="icon-box bg-card-green">
+                            <i class="bi bi-box-arrow-in-down"></i>
+                        </div>
+                        <span class="card-title text-center">Entradas</span>
+                        <span class="card-desc">Adicionar estoque</span>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="relatorios.php" class="dash-card">
+                        <div class="icon-box bg-card-purple">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <span class="card-title text-center">Relatórios</span>
+                        <span class="card-desc">Ver histórico</span>
+                    </a>
+                </div>
+
+                <?php if ($is_admin): ?>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <a href="admin_usuarios.php" class="dash-card">
+                            <div class="icon-box bg-card-orange">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <span class="card-title text-center">Usuários</span>
+                            <span class="card-desc">Configurações</span>
+                        </a>
+                    </div>
+                <?php endif; ?>
+
+            <?php else: ?>
+                <!-- SE FOR SOLICITANTE -->
+                <div class="col-12 col-md-6">
+                    <a href="nova_requisicao.php" class="dash-card">
+                        <div class="icon-box bg-card-blue">
+                            <i class="bi bi-cart-plus"></i>
+                        </div>
+                        <span class="card-title text-center">Fazer Pedido</span>
+                        <span class="card-desc">Solicitar materiais ao estoque</span>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6">
+                    <a href="meus_pedidos.php" class="dash-card">
+                        <div class="icon-box bg-card-orange">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <span class="card-title text-center">Meus Pedidos</span>
+                        <span class="card-desc">Total: <?= count($requisicoes) ?> solicitados</span>
                     </a>
                 </div>
             <?php endif; ?>
-
-        <?php else: ?>
-            <!-- SE FOR SOLICITANTE -->
-            <div class="col-12 col-md-6">
-                <a href="nova_requisicao.php" class="dash-card">
-                    <div class="icon-box bg-card-blue">
-                        <i class="bi bi-cart-plus"></i>
-                    </div>
-                    <span class="card-title text-center">Fazer Pedido</span>
-                    <span class="card-desc">Solicitar materiais ao estoque</span>
-                </a>
-            </div>
-            <div class="col-12 col-md-6">
-                <a href="meus_pedidos.php" class="dash-card">
-                    <div class="icon-box bg-card-orange">
-                        <i class="bi bi-clock-history"></i>
-                    </div>
-                    <span class="card-title text-center">Meus Pedidos</span>
-                    <span class="card-desc">Total: <?= count($requisicoes) ?> solicitados</span>
-                </a>
-            </div>
-        <?php endif; ?>
-    </div>
+        </div>
 
 
     </main>
 
-<?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
 
 </body>
+
 </html>
