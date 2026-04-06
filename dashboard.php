@@ -6,7 +6,6 @@
  * Este arquivo é o "coração" da aplicação. Dependendo de quem fizer login 
  * (Comum, Almoxarife ou Admin), a interface se adapta para mostrar menus 
  * diferentes, botões diferentes e dados diferentes. 
- * Ocultar informações de quem não tem permissão é a base da segurança!
  */
 
 // 1. Precisamos da sessão pois o usuário já logou lá no index.php
@@ -304,7 +303,7 @@ if ($is_almoxarife) {
 <body>
 
     <!-- BARRA DE NAVEGAÇÃO BRANCA E LIMPA -->
-    <?php include 'header.php'; ?>
+        <?php include 'header.php'; ?>
 
     <main class="container mb-5" style="max-width: 1100px;">
 
@@ -331,7 +330,7 @@ if ($is_almoxarife) {
         </div>
 
         <!-- ALERTAS CRÍTICOS -->
-        <?php if ($is_almoxarife && count($alertas_estoque) > 0): ?>
+            <?php if ($is_almoxarife && count($alertas_estoque) > 0): ?>
             <div class="alert alert-pill mb-5 no-print shadow-sm">
                 <div class="d-flex align-items-center mb-3">
                     <div class="bg-danger text-white p-2 rounded-circle me-3">
@@ -343,7 +342,7 @@ if ($is_almoxarife) {
                     </div>
                 </div>
                 <div class="row g-2">
-                    <?php foreach ($alertas_estoque as $alerta): ?>
+                        <?php foreach ($alertas_estoque as $alerta): ?>
                         <div class="col-sm-6 col-md-3">
                             <div
                                 class="bg-white p-2 px-3 rounded-pill border d-flex justify-content-between align-items-center">
@@ -351,10 +350,10 @@ if ($is_almoxarife) {
                                 <span class="badge bg-danger rounded-pill"><?= $alerta['estoque_atual'] ?></span>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
                 </div>
             </div>
-        <?php endif; ?>
+            <?php endif; ?>
 
 
         <!-- GRID DE OPÇÕES (Cards Grandes) -->
@@ -390,7 +389,7 @@ if ($is_almoxarife) {
                     </a>
                 </div>
 
-                <?php if ($is_admin): ?>
+                    <?php if ($is_admin): ?>
                     <div class="col-6 col-md-4 col-lg-3">
                         <a href="admin_usuarios.php" class="dash-card">
                             <div class="icon-box bg-card-orange">
@@ -400,9 +399,9 @@ if ($is_almoxarife) {
                             <span class="card-desc">Configurações</span>
                         </a>
                     </div>
-                <?php endif; ?>
+                    <?php endif; ?>
 
-            <?php else: ?>
+                <?php else: ?>
                 <!-- SE FOR SOLICITANTE -->
                 <div class="col-12 col-md-6">
                     <a href="nova_requisicao.php" class="dash-card">
@@ -422,13 +421,13 @@ if ($is_almoxarife) {
                         <span class="card-desc">Total: <?= count($requisicoes) ?> solicitados</span>
                     </a>
                 </div>
-            <?php endif; ?>
+                <?php endif; ?>
         </div>
 
 
     </main>
 
-    <?php include 'footer.php'; ?>
+        <?php include 'footer.php'; ?>
 
 </body>
 
