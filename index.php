@@ -84,9 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Acesso - Controle de Estoque</title>
 
     <!-- 
-      BOOTSTRAP 5
-      Estamos usando Bootstrap via CDN. Ele nos dá toda a estrutura base de botões 
-      redondos, margens, cores sem a necessidade de escrever dezenas de linhas de CSS. 
+       Bootstrap via CDN.
+       Ajuste de margens do Bootstrap 
     -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
