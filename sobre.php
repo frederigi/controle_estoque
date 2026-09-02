@@ -167,8 +167,6 @@ if (!isset($_SESSION['usuario_id'])) {
                                     Zerbinati Custódio</li>
                                 <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Davi Balbino
                                     Siqueira Lima</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Naelton Alves
-                                    da Silva</li>
                             </ul>
                             <div class="mt-4 pt-3 border-top d-flex justify-content-between">
                                 <span class="small text-muted">Versão 1.0</span>
